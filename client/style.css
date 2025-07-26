@@ -152,7 +152,7 @@ body {
     max-width: 1200px;
 }
 
-/* Card Styles */
+/* Card Styles - New Design */
 .card-container {
     display: flex;
     justify-content: center;
@@ -160,38 +160,55 @@ body {
 }
 
 .card {
-    background: white;
+    width: 375px;
+    height: 525px;
+    position: relative;
+    background: #0D0D0D;
     border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    width: 300px;
     transition: transform 0.3s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.02);
 }
 
 .card-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 15px;
-    text-align: center;
+    width: calc(100% - 40px);
+    padding: 10px 15px;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    background: linear-gradient(90deg, #FAF7A5 0%, #EAA26B 100%);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card-header h3, .card-header h4 {
     margin: 0;
-    font-size: 1.1rem;
+    color: black;
+    font-size: 24px;
+    font-family: 'Jockey One', sans-serif;
+    font-weight: 400;
+    text-align: center;
+    word-wrap: break-word;
 }
 
 .card-header h4 {
-    font-size: 0.9rem;
-    opacity: 0.9;
+    font-size: 18px;
     margin-bottom: 5px;
+    font-family: 'Inter', sans-serif;
 }
 
 .card-image {
-    height: 200px;
+    width: calc(100% - 40px);
+    height: 220px;
+    position: absolute;
+    left: 20px;
+    top: 80px;
+    border-radius: 10px;
     overflow: hidden;
 }
 
@@ -202,62 +219,83 @@ body {
 }
 
 .card-attributes {
-    padding: 20px;
+    position: absolute;
+    left: 20px;
+    top: 320px;
+    width: calc(100% - 40px);
 }
 
 .attribute-row {
+    width: 100%;
+    padding: 8px 15px;
+    margin-bottom: 8px;
+    background: linear-gradient(90deg, #FAF7A5 0%, #EAA26B 100%);
+    border-radius: 10px;
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
+    align-items: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    border-radius: 5px;
-    margin: 2px 0;
-    padding: 12px 10px;
+    position: relative;
 }
 
 .attribute-row:hover {
-    background: #f8f9ff;
+    background: #FAF7A5;
     transform: translateX(5px);
+    outline: 2px solid white;
+    outline-offset: -2px;
 }
 
 .attribute-row:last-child {
-    border-bottom: none;
+    margin-bottom: 0;
 }
 
 .attribute-row.selected {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    font-weight: bold;
+    background: #FAF7A5;
+    outline: 4px solid white;
+    outline-offset: -4px;
 }
 
 .attribute-row.winner {
-    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-    color: white;
-    font-weight: bold;
-    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+    background: #95FF72;
+    outline: 4px solid #789922;
+    outline-offset: -4px;
 }
 
 .attribute-row.loser {
-    background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
-    color: white;
-    opacity: 0.8;
+    background: #FF7E72;
+    outline: 4px solid #9D110D;
+    outline-offset: -4px;
 }
 
 .attr-name {
-    font-weight: 600;
+    color: black;
+    font-size: 16px;
+    font-family: 'Jockey One', sans-serif;
+    font-weight: 400;
 }
 
 .attr-value {
-    font-weight: bold;
-    color: #667eea;
+    text-align: right;
+    color: black;
+    font-size: 16px;
+    font-family: 'Jockey One', sans-serif;
+    font-weight: 400;
 }
 
-.attribute-row.selected .attr-value,
-.attribute-row.winner .attr-value,
-.attribute-row.loser .attr-value {
-    color: white;
+/* Card Footer */
+.card::after {
+    content: "Super Trunfo Online";
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #FAF7A5;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-style: italic;
+    font-weight: 400;
 }
 
 /* Card Comparison */
@@ -266,7 +304,20 @@ body {
     justify-content: space-around;
     align-items: center;
     margin-bottom: 30px;
-    gap: 30px;
+    gap: 20px;
+}
+
+.cards-comparison .card {
+    width: 320px;
+    height: 450px;
+}
+
+.cards-comparison .card-attributes {
+    top: 280px;
+}
+
+.cards-comparison .card-image {
+    height: 180px;
 }
 
 .vs-section {
@@ -315,370 +366,6 @@ body {
 
 .result-actions {
     text-align: center;
-}
-
-/* Lobby Screen */
-.lobby-content {
-    text-align: center;
-    background: white;
-    padding: 60px 40px;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-}
-
-.lobby-content h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.player-info {
-    margin-bottom: 40px;
-    font-size: 1.2rem;
-    color: #666;
-}
-
-.lobby-options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.option-card {
-    background: #f8f9ff;
-    padding: 30px;
-    border-radius: 15px;
-    border: 2px solid #e0e0e0;
-    transition: all 0.3s ease;
-}
-
-.option-card:hover {
-    border-color: #667eea;
-    transform: translateY(-5px);
-}
-
-.option-card h3 {
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.option-card p {
-    margin-bottom: 20px;
-    color: #666;
-    font-size: 0.9rem;
-}
-
-.join-room-form {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-}
-
-.join-room-form input {
-    padding: 12px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-    text-transform: uppercase;
-    text-align: center;
-    font-weight: bold;
-    letter-spacing: 2px;
-    width: 120px;
-}
-
-.player-setup {
-    margin-top: 30px;
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    align-items: center;
-}
-
-.player-setup input {
-    padding: 15px 20px;
-    border: 2px solid #ddd;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    min-width: 200px;
-}
-
-/* Room Screen */
-.room-content {
-    text-align: center;
-    background: white;
-    padding: 60px 40px;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-    max-width: 700px;
-}
-
-.room-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #f0f0f0;
-}
-
-.room-header h2 {
-    color: #333;
-    font-size: 2rem;
-}
-
-.room-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.btn-secondary {
-    background: #6c757d;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-secondary:hover {
-    background: #5a6268;
-    transform: translateY(-2px);
-}
-
-.btn-danger {
-    background: #dc3545;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-danger:hover {
-    background: #c82333;
-    transform: translateY(-2px);
-}
-
-.players-list {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 40px 0;
-}
-
-.player-slot {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    padding: 30px;
-    background: #f8f9ff;
-    border-radius: 15px;
-    min-width: 200px;
-    transition: all 0.3s ease;
-}
-
-.player-slot.filled {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-}
-
-.player-avatar {
-    font-size: 3rem;
-    width: 80px;
-    height: 80px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.player-name {
-    font-weight: bold;
-    font-size: 1.1rem;
-}
-
-.player-status {
-    font-size: 1.5rem;
-}
-
-.player-status.waiting {
-    color: #ffc107;
-}
-
-.player-status.ready {
-    color: #28a745;
-}
-
-.vs-divider {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #667eea;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.room-status {
-    margin-top: 30px;
-    padding: 20px;
-    background: #f8f9ff;
-    border-radius: 10px;
-}
-
-.room-status p {
-    font-size: 1.1rem;
-    color: #666;
-    margin: 0;
-}
-
-/* Online Game Specific */
-.connection-status {
-    font-size: 0.9rem;
-    font-weight: bold;
-}
-
-.connection-status.connected {
-    color: #28a745;
-}
-
-.connection-status.disconnected {
-    color: #dc3545;
-}
-
-.waiting-message {
-    text-align: center;
-    padding: 60px 40px;
-}
-
-.waiting-message h3 {
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 2rem;
-}
-
-.waiting-message p {
-    color: #666;
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-}
-
-.spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid #667eea;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto;
-}
-
-.turn-message {
-    text-align: center;
-    margin-bottom: 30px;
-    padding: 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border-radius: 15px;
-}
-
-.turn-message h3 {
-    margin-bottom: 10px;
-    font-size: 1.8rem;
-}
-
-.turn-message p {
-    margin: 0;
-    font-size: 1.1rem;
-    opacity: 0.9;
-}
-
-.my-card .card-header {
-    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-}
-
-.opponent-card .card-header {
-    background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
-}
-
-.game-over-actions {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 30px;
-}
-
-/* Modal */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
-}
-
-.modal-content {
-    background: white;
-    padding: 40px;
-    border-radius: 15px;
-    max-width: 400px;
-    text-align: center;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
-
-.modal-content h3 {
-    color: #dc3545;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-}
-
-.modal-content p {
-    color: #666;
-    margin-bottom: 30px;
-    font-size: 1.1rem;
-}
-
-/* Responsive Design for Online */
-@media (max-width: 768px) {
-    .lobby-options {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .join-room-form {
-        flex-direction: column;
-    }
-    
-    .player-setup {
-        flex-direction: column;
-    }
-    
-    .room-header {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .players-list {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .vs-divider {
-        order: 2;
-    }
-    
-    .game-over-actions {
-        flex-direction: column;
-    }
 }
 
 /* Game Over Screen */
