@@ -17,8 +17,21 @@ const io = socketIo(server, {
 
 const PORT = process.env.PORT || 3001;
 
-// Load car data
-const carsData = JSON.parse(fs.readFileSync(path.join(__dirname, '../../cars.json'), 'utf8'));
+// Load car data - try both possible paths
+let carsData;
+const carsPath1 = path.join(__dirname, '../cars.json');
+const carsPath2 = path.join(__dirname, '../../cars.json');
+
+if (fs.existsSync(carsPath1)) {
+    carsData = JSON.parse(fs.readFileSync(carsPath1, 'utf8'));
+    console.log('Loaded cars from:', carsPath1);
+} else if (fs.existsSync(carsPath2)) {
+    carsData = JSON.parse(fs.readFileSync(carsPath2, 'utf8'));
+    console.log('Loaded cars from:', carsPath2);
+} else {
+    console.error('Cars data not found! Checked:', carsPath1, carsPath2);
+    process.exit(1);
+}
 
 // Game state storage
 const rooms = new Map();
@@ -27,7 +40,20 @@ const players = new Map(); // socketId -> player info
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../client')));
+
+// Serve static files - try both possible paths
+const clientPath1 = path.join(__dirname, '../client');
+const clientPath2 = path.join(__dirname, '../../client');
+
+if (fs.existsSync(clientPath1)) {
+    app.use(express.static(clientPath1));
+    console.log('Serving client from:', clientPath1);
+} else if (fs.existsSync(clientPath2)) {
+    app.use(express.static(clientPath2));
+    console.log('Serving client from:', clientPath2);
+} else {
+    console.log('Client directory not found! Checked:', clientPath1, clientPath2);
+}
 
 // Utility functions
 function shuffleArray(array) {
@@ -447,7 +473,25 @@ app.get('/api/attributes', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/index.html'));
+    const indexPath1 = path.join(__dirname, '../client/index.html');
+    const indexPath2 = path.join(__dirname, '../../client/index.html');
+    
+    if (fs.existsSync(indexPath1)) {
+        res.sendFile(indexPath1);
+    } else if (fs.existsSync(indexPath2)) {
+        res.sendFile(indexPath2);
+    } else {
+        res.status(404).send(`
+            <h1>Super Trunfo Online Server</h1>
+            <p>Client files not found!</p>
+            <p>Checked paths:</p>
+            <ul>
+                <li>${indexPath1}</li>
+                <li>${indexPath2}</li>
+            </ul>
+            <p>Current directory: ${__dirname}</p>
+        `);
+    }
 });
 
 server.listen(PORT, () => {
