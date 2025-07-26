@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: supertrunfo-online
+    env: node
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm start
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+    healthCheckPath: /api/health
