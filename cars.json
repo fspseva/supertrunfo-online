@@ -1,0 +1,263 @@
+{
+  "attributes": {
+    "maxSpeed": {"name": "Velocidade Máxima (km/h)", "direction": "max"},
+    "power": {"name": "Potência (HP)", "direction": "max"},
+    "acceleration": {"name": "0-100 km/h (s)", "direction": "min"},
+    "displacement": {"name": "Cilindrada (cc)", "direction": "max"},
+    "weight": {"name": "Peso (kg)", "direction": "min"}
+  },
+  "cards": [
+    {
+      "id": "koenigsegg_jesko",
+      "name": "Koenigsegg Jesko Absolut",
+      "imageUrl": "./carros_imgs/Koenigsegg_Jesko_Absolut.jpg",
+      "attrs": {
+        "maxSpeed": 530,
+        "power": 1600,
+        "acceleration": 2.5,
+        "displacement": 5000,
+        "weight": 1420
+      }
+    },
+    {
+      "id": "ferrari_daytona_sp3",
+      "name": "Ferrari Daytona SP3",
+      "imageUrl": "./carros_imgs/Ferrari_Daytona_SP3.jpg",
+      "attrs": {
+        "maxSpeed": 340,
+        "power": 840,
+        "acceleration": 2.9,
+        "displacement": 6496,
+        "weight": 1485
+      }
+    },
+    {
+      "id": "lamborghini_temerario",
+      "name": "Lamborghini Temerario",
+      "imageUrl": "./carros_imgs/Lamborghini_Temerario.jpg",
+      "attrs": {
+        "maxSpeed": 335,
+        "power": 920,
+        "acceleration": 3.0,
+        "displacement": 4000,
+        "weight": 1520
+      }
+    },
+    {
+      "id": "alpine_a110",
+      "name": "Alpine A110 S",
+      "imageUrl": "./carros_imgs/Alpine_A110.jpg",
+      "attrs": {
+        "maxSpeed": 260,
+        "power": 292,
+        "acceleration": 4.2,
+        "displacement": 1798,
+        "weight": 1103
+      }
+    },
+    {
+      "id": "chevrolet_camaro_zl1",
+      "name": "Chevrolet Camaro ZL1",
+      "imageUrl": "./carros_imgs/Chevrolet_Camaro_ZL1.jpg",
+      "attrs": {
+        "maxSpeed": 318,
+        "power": 650,
+        "acceleration": 3.5,
+        "displacement": 6162,
+        "weight": 1753
+      }
+    },
+    {
+      "id": "dodge_challenger_hellcat",
+      "name": "Dodge Challenger SRT Hellcat",
+      "imageUrl": "./carros_imgs/Dodge_Challenger_SRT_Hellcat.jpg",
+      "attrs": {
+        "maxSpeed": 315,
+        "power": 717,
+        "acceleration": 3.4,
+        "displacement": 6166,
+        "weight": 1995
+      }
+    },
+    {
+      "id": "mazda_furai",
+      "name": "Mazda Furai",
+      "imageUrl": "./carros_imgs/Mazda_Furai.jpg",
+      "attrs": {
+        "maxSpeed": 300,
+        "power": 450,
+        "acceleration": 3.5,
+        "displacement": 1300,
+        "weight": 900
+      }
+    },
+    {
+      "id": "porsche_911_gt3_rs",
+      "name": "Porsche 911 GT3 RS (992)",
+      "imageUrl": "./carros_imgs/Porsche_911_GT3_RS_992.jpg",
+      "attrs": {
+        "maxSpeed": 296,
+        "power": 525,
+        "acceleration": 3.2,
+        "displacement": 3996,
+        "weight": 1450
+      }
+    },
+    {
+      "id": "porsche_taycan_turbo_gt",
+      "name": "Porsche Taycan Turbo GT",
+      "imageUrl": "./carros_imgs/Porsche_Taycan_Turbo_GT.jpg",
+      "attrs": {
+        "maxSpeed": 305,
+        "power": 1020,
+        "acceleration": 2.3,
+        "displacement": 0,
+        "weight": 2340
+      }
+    },
+    {
+      "id": "subaru_wrx_sti",
+      "name": "Subaru WRX STI (VA)",
+      "imageUrl": "./carros_imgs/Subaru_WRX_STI_VA.jpg",
+      "attrs": {
+        "maxSpeed": 255,
+        "power": 310,
+        "acceleration": 5.2,
+        "displacement": 2457,
+        "weight": 1568
+      }
+    },
+    {
+      "id": "xpeng_p7",
+      "name": "XPeng P7 Performance",
+      "imageUrl": "./carros_imgs/XPeng_P7_Performance.jpg",
+      "attrs": {
+        "maxSpeed": 200,
+        "power": 430,
+        "acceleration": 4.3,
+        "displacement": 0,
+        "weight": 1980
+      }
+    },
+    {
+      "id": "ferrari_laferrari",
+      "name": "Ferrari LaFerrari",
+      "imageUrl": "./carros_imgs/Ferrari_LaFerrari.jpg",
+      "attrs": {
+        "maxSpeed": 350,
+        "power": 963,
+        "acceleration": 2.4,
+        "displacement": 6262,
+        "weight": 1585
+      }
+    },
+    {
+      "id": "lamborghini_revuelto",
+      "name": "Lamborghini Revuelto",
+      "imageUrl": "./carros_imgs/Lamborghini_Revuelto.jpg",
+      "attrs": {
+        "maxSpeed": 350,
+        "power": 1015,
+        "acceleration": 2.5,
+        "displacement": 6498,
+        "weight": 1772
+      }
+    },
+    {
+      "id": "mclaren_speedtail",
+      "name": "McLaren Speedtail",
+      "imageUrl": "./carros_imgs/McLaren_Speedtail.jpg",
+      "attrs": {
+        "maxSpeed": 403,
+        "power": 1070,
+        "acceleration": 2.5,
+        "displacement": 3994,
+        "weight": 1430
+      }
+    },
+    {
+      "id": "mustang_mach_e_gt",
+      "name": "Ford Mustang Mach-E GT Performance",
+      "imageUrl": "./carros_imgs/Mustang_Mach-E_GT_Performance.jpg",
+      "attrs": {
+        "maxSpeed": 200,
+        "power": 480,
+        "acceleration": 3.5,
+        "displacement": 0,
+        "weight": 2218
+      }
+    },
+    {
+      "id": "maserati_mc12",
+      "name": "Maserati MC12",
+      "imageUrl": "./carros_imgs/Maserati_MC12.jpg",
+      "attrs": {
+        "maxSpeed": 330,
+        "power": 630,
+        "acceleration": 3.8,
+        "displacement": 5998,
+        "weight": 1335
+      }
+    },
+    {
+      "id": "aston_martin_dbx707",
+      "name": "Aston Martin DBX707",
+      "imageUrl": "./carros_imgs/Aston_Martin_DBX707.jpg",
+      "attrs": {
+        "maxSpeed": 310,
+        "power": 707,
+        "acceleration": 3.3,
+        "displacement": 3982,
+        "weight": 2245
+      }
+    },
+    {
+      "id": "bugatti_bolide",
+      "name": "Bugatti Bolide",
+      "imageUrl": "./carros_imgs/Bugatti_Bolide.jpg",
+      "attrs": {
+        "maxSpeed": 500,
+        "power": 1825,
+        "acceleration": 2.17,
+        "displacement": 7993,
+        "weight": 1240
+      }
+    },
+    {
+      "id": "alfa_romeo_giulia_quadrifoglio",
+      "name": "Alfa Romeo Giulia Quadrifoglio",
+      "imageUrl": "./carros_imgs/Alfa_Romeo_Giulia_Quadrifoglio.jpg",
+      "attrs": {
+        "maxSpeed": 307,
+        "power": 520,
+        "acceleration": 3.8,
+        "displacement": 2891,
+        "weight": 1655
+      }
+    },
+    {
+      "id": "renault_megane_rs300",
+      "name": "Renault Mégane RS 300 Trophy",
+      "imageUrl": "./carros_imgs/Renault_Megane_RS_300.jpg",
+      "attrs": {
+        "maxSpeed": 260,
+        "power": 300,
+        "acceleration": 5.7,
+        "displacement": 1798,
+        "weight": 1430
+      }
+    },
+    {
+      "id": "ferrari_roma",
+      "name": "Ferrari Roma",
+      "imageUrl": "./carros_imgs/Ferrari_Roma.jpg",
+      "attrs": {
+        "maxSpeed": 320,
+        "power": 620,
+        "acceleration": 3.4,
+        "displacement": 3855,
+        "weight": 1570
+      }
+    }
+  ]
+}

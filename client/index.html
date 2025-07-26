@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Trunfo Online - Carros</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="screen">
+            <div class="welcome-content">
+                <h1>Super Trunfo Online</h1>
+                <h2>Edição Carros</h2>
+                <div class="game-info">
+                    <p>Jogo multiplayer online para 2 jogadores</p>
+                    <p>Conecte-se com amigos em dispositivos diferentes</p>
+                </div>
+                <div class="player-setup">
+                    <input type="text" id="player-name" placeholder="Seu nome" maxlength="20">
+                    <button id="register-btn" class="btn-primary">Conectar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lobby Screen -->
+        <div id="lobby-screen" class="screen hidden">
+            <div class="lobby-content">
+                <h1>Lobby</h1>
+                <div class="player-info">
+                    <p>Bem-vindo, <span id="current-player-name">Jogador</span>!</p>
+                </div>
+                
+                <div class="lobby-options">
+                    <div class="option-card">
+                        <h3>Criar Sala</h3>
+                        <p>Crie uma nova sala e convide um amigo</p>
+                        <button id="create-room-btn" class="btn-primary">Criar Sala</button>
+                    </div>
+                    
+                    <div class="option-card">
+                        <h3>Entrar em Sala</h3>
+                        <p>Digite o código da sala do seu amigo</p>
+                        <div class="join-room-form">
+                            <input type="text" id="room-code" placeholder="Código da sala" maxlength="6">
+                            <button id="join-room-btn" class="btn-primary">Entrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Room Screen -->
+        <div id="room-screen" class="screen hidden">
+            <div class="room-content">
+                <div class="room-header">
+                    <h2>Sala: <span id="room-code-display">ABCD12</span></h2>
+                    <div class="room-actions">
+                        <button id="copy-code-btn" class="btn-secondary">Copiar Código</button>
+                        <button id="leave-room-btn" class="btn-danger">Sair da Sala</button>
+                    </div>
+                </div>
+                
+                <div class="players-list">
+                    <div class="player-slot" id="player-1-slot">
+                        <div class="player-avatar">👤</div>
+                        <span class="player-name">Aguardando...</span>
+                        <span class="player-status waiting">●</span>
+                    </div>
+                    <div class="vs-divider">VS</div>
+                    <div class="player-slot" id="player-2-slot">
+                        <div class="player-avatar">👤</div>
+                        <span class="player-name">Aguardando...</span>
+                        <span class="player-status waiting">●</span>
+                    </div>
+                </div>
+                
+                <div class="room-status">
+                    <p id="room-status-text">Aguardando outro jogador...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen hidden">
+            <div class="game-header">
+                <div class="player-info">
+                    <span id="opponent-info">Oponente: 0 cartas</span>
+                    <span id="pot-info">Pot: 0 cartas</span>
+                    <span id="my-info">Você: 0 cartas</span>
+                </div>
+                <div class="turn-info">
+                    <span id="turn-indicator">Aguardando...</span>
+                </div>
+                <div class="connection-status">
+                    <span id="connection-status" class="connected">● Conectado</span>
+                </div>
+            </div>
+
+            <div class="game-content">
+                <!-- Waiting for Turn -->
+                <div id="waiting-turn" class="phase-content">
+                    <div class="waiting-message">
+                        <h3>Aguardando sua vez...</h3>
+                        <p>O oponente está escolhendo o atributo</p>
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+
+                <!-- Card Selection Phase -->
+                <div id="card-selection" class="phase-content hidden">
+                    <div class="turn-message">
+                        <h3>Sua vez!</h3>
+                        <p>Escolha um atributo para competir:</p>
+                    </div>
+                    <div class="card-container">
+                        <div class="card" id="current-card">
+                            <div class="card-header">
+                                <h3 id="card-name">Nome do Carro</h3>
+                            </div>
+                            <div class="card-image">
+                                <img id="card-img" src="" alt="Carro">
+                            </div>
+                            <div class="card-attributes">
+                                <div class="attribute-row" data-attr="maxSpeed">
+                                    <span class="attr-name">Velocidade Máxima</span>
+                                    <span class="attr-value"></span>
+                                </div>
+                                <div class="attribute-row" data-attr="power">
+                                    <span class="attr-name">Potência</span>
+                                    <span class="attr-value"></span>
+                                </div>
+                                <div class="attribute-row" data-attr="acceleration">
+                                    <span class="attr-name">0-100 km/h</span>
+                                    <span class="attr-value"></span>
+                                </div>
+                                <div class="attribute-row" data-attr="displacement">
+                                    <span class="attr-name">Cilindrada</span>
+                                    <span class="attr-value"></span>
+                                </div>
+                                <div class="attribute-row" data-attr="weight">
+                                    <span class="attr-name">Peso</span>
+                                    <span class="attr-value"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Reveal Phase -->
+                <div id="card-reveal" class="phase-content hidden">
+                    <div class="cards-comparison">
+                        <div class="card my-card">
+                            <div class="card-header">
+                                <h4>Sua Carta</h4>
+                                <h3 id="my-card-name">Nome do Carro</h3>
+                            </div>
+                            <div class="card-image">
+                                <img id="my-card-img" src="" alt="Minha Carta">
+                            </div>
+                            <div class="card-attributes">
+                                <div class="attribute-row" id="my-attr-maxSpeed">
+                                    <span class="attr-name">Velocidade Máxima</span>
+                                    <span class="attr-value"></span>
+                                </div>
+                                <div class="attribute-row" id="my-attr-power">
+                                    <span class="attr-name">Potência</span>
+                                    <span class="attr-value"></span>
+                                </div>
+                                <div class="attribute-row" id="my-attr-acceleration">
+                                    <span class="attr-name">0-100 km/h</span>
+                                    <span class="attr-value"></span>
+                                </div>
+                                <div class="attribute-row" id="my-attr-displacement">
+                                    <span class="attr-name">Cilindrada</span>
+                                    <span class="attr-value"></span>
+                                </div>
+                                <div class="attribute-row" id="my-attr-weight">
+                                    <span class="attr-name">Peso</span>
+                                    <span class="attr-value"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="vs-section">
+                            <div class="vs-text">VS</div>
+                            <div class="result-text" id="result-text"></div>
+                        </div>
+
+                        <div class="card opponent-card">
+                            <div class="card-header">
+                                <h4>Carta do Oponente</h4>
+                                <h3 id="opponent-card-name">Nome do Carro</h3>
+                            </div>
+                            <div class="card-image">
+                                <img id="opponent-card-img" src="" alt="Carta do Oponente">
+                            </div>
+                            <div class="card-attributes">
+                                <div class="attribute-row" id="opponent-attr-maxSpeed">
+                                    <span class="attr-name">Velocidade Máxima</span>
+                                    <span class="attr-value"></span>
+                                </div>
+                                <div class="attribute-row" id="opponent-attr-power">
+                                    <span class="attr-name">Potência</span>
+                                    <span class="attr-value"></span>
+                                </div>
+                                <div class="attribute-row" id="opponent-attr-acceleration">
+                                    <span class="attr-name">0-100 km/h</span>
+                                    <span class="attr-value"></span>
+                                </div>
+                                <div class="attribute-row" id="opponent-attr-displacement">
+                                    <span class="attr-name">Cilindrada</span>
+                                    <span class="attr-value"></span>
+                                </div>
+                                <div class="attribute-row" id="opponent-attr-weight">
+                                    <span class="attr-name">Peso</span>
+                                    <span class="attr-value"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="result-actions">
+                        <button id="next-round-btn" class="btn-primary">Próxima Rodada</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="game-over-screen" class="screen hidden">
+            <div class="game-over-content">
+                <h1>Fim de Jogo!</h1>
+                <h2 id="winner-text">Resultado</h2>
+                <div class="final-stats">
+                    <p id="final-stats-text">Estatísticas finais</p>
+                </div>
+                <div class="game-over-actions">
+                    <button id="play-again-btn" class="btn-primary">Jogar Novamente</button>
+                    <button id="back-to-lobby-btn" class="btn-secondary">Voltar ao Lobby</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error Modal -->
+        <div id="error-modal" class="modal hidden">
+            <div class="modal-content">
+                <h3>Erro</h3>
+                <p id="error-message">Algo deu errado...</p>
+                <button id="error-close-btn" class="btn-primary">Fechar</button>
+            </div>
+        </div>
+
+        <!-- Loading overlay -->
+        <div id="loading" class="loading hidden">
+            <div class="loading-spinner"></div>
+            <p id="loading-text">Carregando...</p>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="game-online.js"></script>
+</body>
+</html>
